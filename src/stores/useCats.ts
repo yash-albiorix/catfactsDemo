@@ -12,10 +12,10 @@ export const useCatsStore = defineStore("cats", {
       fetch("https://cat-fact.herokuapp.com/facts")
         .then((response) => response.json())
         .then((data) => {
-          console.log("data", data);
           this.data = data;
         })
         .catch((e) => {
+          // kept static data in case API failes
           this.data = [
             {
               status: { verified: true, feedback: "", sentCount: 1 },
@@ -90,5 +90,5 @@ export const useCatsStore = defineStore("cats", {
         });
     }
   },
-  persist: true
+  persist: true // piniaPluginPersistedstate
 });
